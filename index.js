@@ -1,12 +1,24 @@
+import "dotenv/config";
 import express from "express";
 import http from "http";
-function main() {
+import router from "./routes/index.js";
+import mongoose from "mongoose";
+
+async function main() {
   const app = express();
   const server = http.createServer(app);
+
+  await mongoose.connect(process.env.MONGODB_URI || "");
+  console.log("🚀 Connected to MongoDB");
+
+  app.use(express.json({ limit: "5mb" }));
+  app.use(express.urlencoded({ extended: true }));
+
+  app.use(router);
 
   server.listen(3000, () => {
     console.log("Server listening on port 3000");
   });
 }
 
-main();
+main().catch((err) => console.error(err));

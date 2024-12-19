@@ -1,12 +1,5 @@
-import { MESSAGES, RESOURCES, STATUS } from "../../config";
-import { UserServices } from "./user.service";
-
-/*
-user.router.js (Authorization, Authentication, routers)
-user.controller.js (orchestrators - call service don't contain logic) - They handle the HTTP status codes as part of this response too.
-user.service.js (business logic, it should not contain any logic of db data fetching)
-user.repository.js (for access to data)
-*/
+import { MESSAGES, RESOURCES, STATUS } from "../../config/index.js";
+import { UserServices } from "./user.service.js";
 
 export class UserController {
   constructor() {
@@ -15,10 +8,21 @@ export class UserController {
 
   async singUp(req, res, next) {
     try {
-      const result = await this.userService.singUp(req.body);
+      const result = await this.userService.signUp(req.body);
       return res
         .status(STATUS.CREATED)
         .json({ message: MESSAGES.created(RESOURCES.USER), id: result.id });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async login(req, res, next) {
+    try {
+      const result = await this.userService.login(req.body);
+      return res.status(STATUS.OK).json({
+        token: result,
+      });
     } catch (error) {
       next(error);
     }

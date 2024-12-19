@@ -1,6 +1,6 @@
-import { MESSAGES, STATUS } from "../config/index";
-import { decodeToken } from "../helper";
-import User from "../models/User";
+import { MESSAGES, STATUS } from "../config/index.js";
+import { decodeToken } from "../helper.js";
+import User from "../models/User.js";
 
 export const auth = async (req, res, next) => {
   try {

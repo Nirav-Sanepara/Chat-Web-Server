@@ -36,3 +36,17 @@ export const RESOURCES = {
   CONVERSATION: "conversation",
   MESSAGE: "message",
 };
+
+export const SOCKET_MESSAGE_EVENTS = {
+  MESSAGE_SEND: "message:send",
+  MESSAGE_RECEIVED: "message:received",
+  MESSAGE_DELETE: "message:delete",
+  MESSAGE_PIN: "message:pin",
+  MESSAGE_RECEIVED_PIN: "message:received:pin",
+  MESSAGE_UNPIN: "message:unpin",
+  MESSAGE_REACT: "message:reaction",
+  MESSAGE_REMOVE_REACT: "message:remove-reaction",
+  MESSAGE_READ: "message:read",
+  MESSAGE_READ_ACK: "message:read:acknowledge",
+  MESSAGE_ERROR: "message:error",
+};

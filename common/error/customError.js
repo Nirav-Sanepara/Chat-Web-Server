@@ -1,4 +1,4 @@
-import { STATUS } from "../../config";
+import { STATUS } from "../../config/index.js";
 
 export class CustomError extends Error {
   /**

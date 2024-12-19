@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
-import { MESSAGES } from "./config";
+import { MESSAGES } from "./config/index.js";
 
 export const decodeToken = async (token, req, res) => {
   try {
+    console.log(token);
     const tokenData = jwt.verify(token, process.env.SECRET_KEY);
     return tokenData;
   } catch (error) {
