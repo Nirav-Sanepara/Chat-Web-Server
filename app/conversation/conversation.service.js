@@ -1,5 +1,5 @@
 import { ConversationRepository } from "./conversation.repository.js";
-import { CustomError, handleError } from "../../common/error/customError.js";
+import { CustomError, handleError } from "./../common/error/customError.js";
 import {
   createConversationSchema,
   getMessagesSchema,

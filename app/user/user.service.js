@@ -1,5 +1,5 @@
 import { UserRepository } from "./user.repository.js";
-import { CustomError, handleError } from "../../common/error/customError.js";
+import { CustomError, handleError } from "./../common/error/customError.js";
 import { loginSchema, signUpSchema } from "../../utils/validations/user.js";
 
 export class UserServices {
@@ -30,6 +30,15 @@ export class UserServices {
         throw new CustomError(error.message, 400, error.details);
       }
       const result = await this.userRepository.login(value);
+      return result;
+    } catch (error) {
+      handleError(error);
+    }
+  }
+
+  async listAllUsers() {
+    try {
+      const result = await this.userRepository.listAllUsers();
       return result;
     } catch (error) {
       handleError(error);

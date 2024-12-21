@@ -27,6 +27,15 @@ export class UserController {
       next(error);
     }
   }
+
+  async listAllUsers(req, res, next) {
+    try {
+      const user = await this.userService.listAllUsers();
+      return res.status(STATUS.OK).json({ user });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export default new UserController();
